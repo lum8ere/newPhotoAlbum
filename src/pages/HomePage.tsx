@@ -1,16 +1,20 @@
-import { Flex } from "antd"
-import { ComponentCard } from "../components/card/Card"
+import { Cardist } from "../components/card/CardList";
 
 export const HomePage = () => {
-    return (
-        <>
-            <Flex gap="middle" vertical={false}>
-                <ComponentCard />
-                <ComponentCard />
-                <ComponentCard />
-                <ComponentCard />
-                <ComponentCard />
-            </Flex>
-        </>
-    )
-}
+  return (
+    <>
+      {/* <Flex
+        gap="middle"
+        vertical={false}
+        wrap="wrap"
+        justify="center"
+        style={{
+          paddingTop: "10px",
+          paddingBottom: "10px",
+        }}
+      > */}
+      <Cardist />
+      {/* </Flex> */}
+    </>
+  );
+};

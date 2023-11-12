@@ -1,66 +1,54 @@
-import { Avatar, Card } from 'antd';
+import { Avatar, Card } from "antd";
+import { useNavigate } from "react-router-dom";
+import { Album } from "../../types/album";
+import { api } from "../../service/api";
+import { useEffect, useState } from "react";
+import { UserType } from "../../types/user";
 
 const { Meta } = Card;
 
-export const ComponentCard = () => {
+export const ComponentCard = ({ id, title, userId }: Album) => {
+  const [user, setUser] = useState<UserType>();
+  const [lastPicture] = useState<string>();
+  const navigate = useNavigate();
 
-    const lastPic = {
-        "albumId": 1,
-        "id": 1,
-        "title": "accusamus beatae ad facilis cum similique qui sunt",
-        "url": "https://via.placeholder.com/600/92c952",
-        "thumbnailUrl": "https://via.placeholder.com/150/92c952"
-    }
+  const handleOpenAlbum = () => {
+    navigate(`/album/${id}`);
+  };
 
-    const album = {
-        "userId": 1,
-        "id": 1,
-        "title": "quidem molestiae enim"
-    }
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const userData = await api.get(`users/${userId}`);
+        // const pictureData = await api.get(`photos?albumId=${id}`);
 
-    const user = {
-        "id": 1,
-        "name": "Leanne Graham",
-        "username": "Bret",
-        "email": "Sincere@april.biz",
-        "address": {
-            "street": "Kulas Light",
-            "suite": "Apt. 556",
-            "city": "Gwenborough",
-            "zipcode": "92998-3874",
-            "geo": {
-                "lat": "-37.3159",
-                "lng": "81.1496"
-            }
-        },
-        "phone": "1-770-736-8031 x56442",
-        "website": "hildegard.org",
-        "company": {
-            "name": "Romaguera-Crona",
-            "catchPhrase": "Multi-layered client-server neural-net",
-            "bs": "harness real-time e-markets"
+        setUser(userData.data);
+        // setLastPicture(pictureData.data[pictureData.data.length - 1]);
+      } catch (error) {
+        console.error("Failed to load user:", error);
+      }
+    };
+
+    fetchData();
+    console.log("Fetching");
+  }, [userId]);
+
+  return (
+    <Card
+      key={`card-${id}`}
+      style={{ width: 300 }}
+      cover={<img alt="example" src={lastPicture} />}
+      hoverable
+      onClick={() => handleOpenAlbum}
+    >
+      <Meta
+        avatar={
+          <Avatar>
+            {user && user.email ? user.name[0].toUpperCase() : null}
+          </Avatar>
         }
-    }
-
-    return (
-        <Card
-            style={{ width: 300 }}
-            cover={
-                <img
-                    alt="example"
-                    src={lastPic.url}
-                />
-            }
-        >
-            <Meta
-                avatar={<Avatar
-                >
-                    {user && user.email
-                        ? user.name[0].toUpperCase()
-                        : null}
-                </Avatar>}
-                title={album.title}
-            />
-        </Card>
-    )
-}
+        title={title}
+      />
+    </Card>
+  );
+};
