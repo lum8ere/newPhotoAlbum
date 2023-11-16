@@ -5,7 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { Album } from "types/album";
 import { UserType } from "types/user";
 
-import { api } from "service/api";
+import { api } from "services/api";
+// import { useQuery } from "@tanstack/react-query";
+// import userService from "services/user.service";
 
 const { Meta } = Card;
 
@@ -13,6 +15,16 @@ export const ComponentCard = ({ id, title, userId }: Album) => {
   const [user, setUser] = useState<UserType>();
   const [lastPicture] = useState<string>();
   const navigate = useNavigate();
+
+  // ['users', userId],
+  // () => userService.getUserById(userId),
+
+  // const { data } = useQuery({
+  //   queryKey: ['users', userId],
+  //   queryFn: () => userService.getUserById(userId),
+  // });
+
+  // console.log(data)
 
   const handleOpenAlbum = () => {
     navigate(`/album/${id}`);

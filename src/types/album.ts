@@ -3,3 +3,8 @@ export type Album = {
     id: string
     title: string
 }
+
+export type PaginationOptions = {
+    page: number;
+    limit?: number;
+}
