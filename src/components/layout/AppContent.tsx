@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import { routes } from '../../routes/route'
-import { RouteType } from '../../types/route';
+import { routes } from 'routes/route'
+import { RouteType } from 'types/route';
 
 const AppContent = () => {
     return (

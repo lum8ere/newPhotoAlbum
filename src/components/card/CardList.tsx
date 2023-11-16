@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { api } from "../../service/api";
-import { Album } from "../../types/album";
-import { ComponentCard } from "./Card";
+import { Album } from "types/album";
+import { api } from "service/api";
+import { ComponentCard } from "components/card/Card";
 
 export const Cardist = () => {
   const [albums, setAlbums] = useState<Album[]>([]);

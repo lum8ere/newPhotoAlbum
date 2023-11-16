@@ -1,5 +1,5 @@
-import { HomePage } from '../pages/HomePage'
-import { RouteType } from '../types/route'
+import { HomePage } from 'pages/HomePage'
+import { RouteType } from 'types/route'
 // import AlbumList from '../pages/Home'
 // import Photos from '../pages/Photos';
 

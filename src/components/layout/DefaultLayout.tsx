@@ -1,6 +1,6 @@
 import { Layout, theme } from "antd";
 import AppContent from "./AppContent";
-import { NavBar } from "../header/Header";
+import { NavBar } from "components/header/Header";
 
 const { Content, Footer } = Layout;
 

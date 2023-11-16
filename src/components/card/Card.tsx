@@ -1,9 +1,11 @@
+import { useEffect, useState } from "react";
 import { Avatar, Card } from "antd";
 import { useNavigate } from "react-router-dom";
-import { Album } from "../../types/album";
-import { api } from "../../service/api";
-import { useEffect, useState } from "react";
-import { UserType } from "../../types/user";
+
+import { Album } from "types/album";
+import { UserType } from "types/user";
+
+import { api } from "service/api";
 
 const { Meta } = Card;
 
